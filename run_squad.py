@@ -707,7 +707,7 @@ def input_fn_builder(input_file, seq_length, is_training, drop_remainder):
     for name in list(example.keys()):
       t = example[name]
       if t.dtype == tf.int64:
-        t = tf.to_int32(t)
+        t = tf.compat.v1.to_int32(t)
       example[name] = t
 
     return example
