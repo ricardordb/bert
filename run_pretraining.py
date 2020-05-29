@@ -334,19 +334,19 @@ def input_fn_builder(input_files,
 
     name_to_features = {
         "input_ids":
-            tf.FixedLenFeature([max_seq_length], tf.int64),
+            tf.compat.v1.FixedLenFeature([max_seq_length], tf.int64),
         "input_mask":
-            tf.FixedLenFeature([max_seq_length], tf.int64),
+            tf.compat.v1.FixedLenFeature([max_seq_length], tf.int64),
         "segment_ids":
-            tf.FixedLenFeature([max_seq_length], tf.int64),
+            tf.compat.v1.FixedLenFeature([max_seq_length], tf.int64),
         "masked_lm_positions":
-            tf.FixedLenFeature([max_predictions_per_seq], tf.int64),
+            tf.compat.v1.FixedLenFeature([max_predictions_per_seq], tf.int64),
         "masked_lm_ids":
-            tf.FixedLenFeature([max_predictions_per_seq], tf.int64),
+            tf.compat.v1.FixedLenFeature([max_predictions_per_seq], tf.int64),
         "masked_lm_weights":
-            tf.FixedLenFeature([max_predictions_per_seq], tf.float32),
+            tf.compat.v1.FixedLenFeature([max_predictions_per_seq], tf.float32),
         "next_sentence_labels":
-            tf.FixedLenFeature([1], tf.int64),
+            tf.compat.v1.FixedLenFeature([1], tf.int64),
     }
 
     # For training, we want a lot of parallel reading and shuffling.
