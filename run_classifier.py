@@ -593,7 +593,7 @@ def create_model(bert_config, is_training, input_ids, input_mask, segment_ids,
 
   output_weights = tf.compat.v1.get_variable(
       "output_weights", [num_labels, hidden_size],
-      initializer=tf.truncated_normal_initializer(stddev=0.02))
+      initializer=tf.compat.v1.truncated_normal_initializer(stddev=0.02))
 
   output_bias = tf.compat.v1.get_variable(
       "output_bias", [num_labels], initializer=tf.zeros_initializer())
