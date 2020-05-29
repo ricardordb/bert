@@ -24,7 +24,7 @@ class OptimizationTest(tf.test.TestCase):
 
   def test_adam(self):
     with self.test_session() as sess:
-      w = tf.get_variable(
+      w = tf.compat.v1.get_variable(
           "w",
           shape=[3],
           initializer=tf.constant_initializer([0.1, -0.2, -0.1]))

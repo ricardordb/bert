@@ -256,7 +256,7 @@ def get_masked_lm_output(bert_config, input_tensor, output_weights, positions,
 
     # The output weights are the same as the input embeddings, but there is
     # an output-only bias for each token.
-    output_bias = tf.get_variable(
+    output_bias = tf.compat.v1.get_variable(
         "output_bias",
         shape=[bert_config.vocab_size],
         initializer=tf.zeros_initializer())
@@ -288,11 +288,11 @@ def get_next_sentence_output(bert_config, input_tensor, labels):
   # Simple binary classification. Note that 0 is "next sentence" and 1 is
   # "random sentence". This weight matrix is not used after pre-training.
   with tf.compat.v1.variable_scope("cls/seq_relationship"):
-    output_weights = tf.get_variable(
+    output_weights = tf.compat.v1.get_variable(
         "output_weights",
         shape=[2, bert_config.hidden_size],
         initializer=modeling.create_initializer(bert_config.initializer_range))
-    output_bias = tf.get_variable(
+    output_bias = tf.compat.v1.get_variable(
         "output_bias", shape=[2], initializer=tf.zeros_initializer())
 
     logits = tf.matmul(input_tensor, output_weights, transpose_b=True)

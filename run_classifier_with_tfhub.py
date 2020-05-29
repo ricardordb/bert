@@ -59,11 +59,11 @@ def create_model(is_training, input_ids, input_mask, segment_ids, labels,
 
   hidden_size = output_layer.shape[-1].value
 
-  output_weights = tf.get_variable(
+  output_weights = tf.compat.v1.get_variable(
       "output_weights", [num_labels, hidden_size],
       initializer=tf.truncated_normal_initializer(stddev=0.02))
 
-  output_bias = tf.get_variable(
+  output_bias = tf.compat.v1.get_variable(
       "output_bias", [num_labels], initializer=tf.zeros_initializer())
 
   with tf.compat.v1.variable_scope("loss"):
